@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\nhanvienController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[nhanvienController::class,"index"]);
+Route::get('/add',[nhanvienController::class,"create"]);
+Route::get('/edit/{id}',[nhanvienController::class,"show"]);
+Route::get('/search',[nhanvienController::class,"search"]);
+
+Route::post('/addNv',[nhanvienController::class,"store"]);
+Route::post('/update/{id}',[nhanvienController::class,"update"]);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
